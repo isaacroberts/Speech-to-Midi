@@ -10,9 +10,13 @@ This is a spectrum analyzer with color-coding and pitch binning to improve compr
 
 Required Packages: 
 	-Numpy
+	
 	-Scipy
+	
 	-PyAudio
+	
 	-PyQtGraph
+	
 
 Usage: 
 	python spectra.py 
