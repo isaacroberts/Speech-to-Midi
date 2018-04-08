@@ -315,6 +315,18 @@ class PitchWitch(object):
 if __name__ =='__main__':
 	global pw
 
+	if len(sys.argv)>=2:
+		if "h" in sys.argv[1]:
+			print(
+			"""
+Usage: python spectra.py X Y
+Where x and y is a range of octaves.
+The lower the bottom octave, the choppier the
+analyzer will be due to FFT constraints.
+Omitting x and y defaults to octaves 3 to 6.
+
+			""")
+		exit(0)
 	if len(sys.argv)>=3:
 		low=int(sys.argv[1])
 		high=int(sys.argv[2])
