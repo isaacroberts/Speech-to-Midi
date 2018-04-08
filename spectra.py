@@ -69,7 +69,7 @@ class PitchWitch(object):
 
 		p=pyaudio.PyAudio()
 
-		output_info=p.get_default_output_device_info()
+		output_info=p.get_default_input_device_info()
 
 		self.CHUNK = 1024*1
 		self.WIDTH = 4
@@ -77,10 +77,10 @@ class PitchWitch(object):
 		self.CHANNELS=1
 		self.RATE = int(output_info['defaultSampleRate'])
 
-		if (self.CHANNELS>output_info['maxOutputChannels']):
-			self.CHANNELS=output_info['maxOutputChannels']
+		if (self.CHANNELS>output_info['maxInputChannels']):
+			self.CHANNELS=output_info['maxInputChannels']
 
-		res=26* 2**(FREQ_RANGE[0]-4)
+		res=26* 2**(FREQ_RANGE[0]-3)
 		min_window=self.RATE/res
 		min_window=2**np.ceil(np.log2(min_window))
 		if self.CHUNK < min_window:
@@ -200,8 +200,8 @@ class PitchWitch(object):
 		self.updated=False
 
 		#---------FFT Math---------
-		fftfreqs=np.fft.fftfreq(self.CHUNK,self.CHUNK/self.RATE)*self.CHUNK
-		fftfreqs=np.abs(fftfreqs[0:int(self.CHUNK)])
+		fftfreqs=np.fft.fftfreq(self.CHUNK*2,self.CHUNK/self.RATE)*self.CHUNK
+		fftfreqs=np.abs(fftfreqs[0:int(self.CHUNK*2)])
 
 		#fftfreqs=1./fftfreqs
 		#print(fftfreqs)
@@ -246,7 +246,12 @@ class PitchWitch(object):
 
 		self.wfy=self.wfy*self.amp_scale
 
-		fy=np.abs(np.fft.fft(self.wfy)[0:self.CHUNK])
+		#pre_fft=self.wfy
+
+		#alternate wfy with zeros
+		pre_fft=np.vstack((self.wfy,np.zeros(self.CHUNK))).reshape((-1,),order='F')
+
+		fy=np.abs(np.fft.fft(pre_fft)[0:self.CHUNK*2])
 
 		cur_freqs=np.zeros(len(NOTES))
 		cur_freqs[self.bins]+=fy
@@ -326,7 +331,7 @@ analyzer will be due to FFT constraints.
 Omitting x and y defaults to octaves 3 to 6.
 
 			""")
-		exit(0)
+			exit(0)
 	if len(sys.argv)>=3:
 		low=int(sys.argv[1])
 		high=int(sys.argv[2])
