@@ -10,6 +10,7 @@ This is a spectrum analyzer with color-coding and pitch binning to improve compr
 
 Required Packages: 
 
+	-Python3 
 	-Numpy	
 	-Scipy
 	-PyAudio
@@ -18,15 +19,15 @@ Required Packages:
 
 Usage: 
 
-	python spectra.py 
+	python3 spectra.py 
 		or
-	python spectra.py X Y
+	python3 spectra.py X Y
 	
 Where X is the lower octave and Y is the higher octave. The lower the bottom octave, the choppier the analyzer will be due to FFT constraints. 
 
 Omitting X and Y defaults an octave range of 3 to 6.
 
-Run "python spectra.py -help" to see this description.
+Run with "-help" to see this description.
 
 
 ---
