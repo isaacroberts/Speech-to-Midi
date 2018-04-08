@@ -26,7 +26,7 @@ Where X is the lower octave and Y is the higher octave. The lower the bottom oct
 
 Omitting X and Y defaults an octave range of 3 to 6.
 
-Run python spectra.py -help to see this description.
+Run "python spectra.py -help" to see this description.
 
 
 ---
