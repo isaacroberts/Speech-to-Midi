@@ -1,12 +1,10 @@
-# PitchWitch
+# Speech To Midi
 
 README
 
 ---
 
-This is a spectrum analyzer with color-coding and grouping across octaves to improve comprehension speed.
-
-WARNING: This project is giving me synesthesia.
+This is a spectrum analyzer and MIDI converter designed with the intention of using background conversation to seed music generation.
 
 ---
 
@@ -34,6 +32,6 @@ Run with "-help" to see this description.
 
 ---
 
-I developed it to see if there were any immediately recognizable patterns in peoples' voice pitches. I noticed a few minor patterns like people repeatedly ending sentences on the same note but it was too chaotic for me to pursue further at this point. 
-For future development I would like to turn recorded speech into MIDI data and run it on a machine learning model to see how it compares to music. 
+I started this project to see if there was any truth to the old saying that music is a conversation. After converting the pitch bins to MIDI data I found that regular speech is too unemotive and too frequently interrupted while most music is highly emotive and highly continuous. 
+For future development I would like to find a data set of background speech and compare it to background music (such as trance or classical).
 
