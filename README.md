@@ -32,6 +32,4 @@ Run with "-help" to see this description.
 
 ---
 
-I started this project to see if there was any truth to the old saying that music is a conversation. After converting the pitch bins to MIDI data I found that regular speech is too unemotive and too frequently interrupted while most music is highly emotive and highly continuous. 
-For future development I would like to find a data set of background speech and compare it to background music (such as trance or classical).
 
